@@ -1,0 +1,4 @@
+.git
+# Built binary at repo root only — do not use **/abi-minimal-initrd-inject (that drops cmd/abi-minimal-initrd-inject/).
+/abi-minimal-initrd-inject
+*.iso

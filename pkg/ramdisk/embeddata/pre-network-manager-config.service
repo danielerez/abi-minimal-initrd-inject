@@ -1,0 +1,17 @@
+
+[Unit]
+Description=Assisted static network config
+DefaultDependencies=no
+
+# We need to run after the kernel and udev have detected all the network interface devices,
+# otherwise the mechanism that we use to find the MAC addresses will not work and the configuration
+# will not be applied.
+After=systemd-udev-settle.service
+
+# We need to run before the service that installs the network connection files that we generate.
+Before=coreos-copy-firstboot-network.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/pre-network-manager-config.sh
